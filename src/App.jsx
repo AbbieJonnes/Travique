@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-//import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 //import Destinations from "./pages/Destinations";
 //import DestinationDetails from "./pages/DestinationDetails";
 //import Profile from "./pages/Profile";
@@ -21,9 +21,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        {/* <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/destinations" element={<Destinations />} />
+        {/* <Route path="/destinations" element={<Destinations />} />
 
         <Route
           path="/destination/:id"
