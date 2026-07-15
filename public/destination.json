@@ -1,0 +1,383 @@
+[
+    {
+      "id": 1,
+      "name": "Maasai Mara National Reserve",
+      "country": "Kenya",
+      "city": "Narok",
+      "category": "Safari",
+      "price": 450,
+      "rating": 4.9,
+      "duration": "5 Days",
+      "currency": "USD",
+      "bestTimeToVisit": "July - October",
+      "activities": [
+        "Game Drives",
+        "Hot Air Balloon Safari",
+        "Wildlife Photography"
+      ],
+      "description": "Witness the spectacular Great Migration and experience the Big Five in Kenya's most famous wildlife reserve.",
+      "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801"
+    },
+    {
+      "id": 2,
+      "name": "Diani Beach",
+      "country": "Kenya",
+      "city": "Kwale",
+      "category": "Beach",
+      "price": 320,
+      "rating": 4.8,
+      "duration": "4 Days",
+      "currency": "USD",
+      "bestTimeToVisit": "December - March",
+      "activities": [
+        "Snorkeling",
+        "Scuba Diving",
+        "Beach Relaxation"
+      ],
+      "description": "Relax on pristine white sands and enjoy crystal-clear waters along Kenya's award-winning coastline.",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    },
+    {
+      "id": 3,
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "category": "City",
+      "price": 950,
+      "rating": 4.9,
+      "duration": "6 Days",
+      "currency": "USD",
+      "bestTimeToVisit": "November - March",
+      "activities": [
+        "Desert Safari",
+        "Burj Khalifa",
+        "Luxury Shopping"
+      ],
+      "description": "Experience futuristic architecture, luxury shopping, and unforgettable desert adventures.",
+      "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c"
+    },
+    {
+      "id": 4,
+      "name": "Tokyo",
+      "country": "Japan",
+      "city": "Tokyo",
+      "category": "City",
+      "price": 1100,
+      "rating": 4.9,
+      "duration": "7 Days",
+      "currency": "USD",
+      "bestTimeToVisit": "March - May",
+      "activities": [
+        "Cherry Blossom Viewing",
+        "Temple Tours",
+        "Anime Districts"
+      ],
+      "description": "A perfect blend of futuristic innovation, rich traditions, and incredible cuisine.",
+      "image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf"
+    },
+    {
+      "id": 5,
+      "name": "Maldives",
+      "country": "Maldives",
+      "city": "Malé",
+      "category": "Island",
+      "price": 1400,
+      "rating": 5.0,
+      "duration": "6 Days",
+      "currency": "USD",
+      "bestTimeToVisit": "November - April",
+      "activities": [
+        "Snorkeling",
+        "Private Villas",
+        "Sunset Cruises"
+      ],
+      "description": "Escape to luxurious overwater villas surrounded by turquoise lagoons and coral reefs.",
+      "image": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd"
+    },
+
+    {
+        "id": 6,
+        "name": "Interlaken",
+        "country": "Switzerland",
+        "city": "Interlaken",
+        "category": "Mountain",
+        "price": 1250,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "June - September",
+        "activities": [
+          "Paragliding",
+          "Mountain Hiking",
+          "Lake Cruises"
+        ],
+        "description": "Discover breathtaking alpine scenery, crystal-clear lakes and thrilling outdoor adventures.",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+      },
+      {
+        "id": 7,
+        "name": "Paris",
+        "country": "France",
+        "city": "Paris",
+        "category": "City",
+        "price": 980,
+        "rating": 4.8,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "April - June",
+        "activities": [
+          "Eiffel Tower",
+          "Museum Tours",
+          "Seine River Cruise"
+        ],
+        "description": "Experience romance, world-famous landmarks and incredible French cuisine.",
+        "image": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a"
+      },
+      {
+        "id": 8,
+        "name": "Rome",
+        "country": "Italy",
+        "city": "Rome",
+        "category": "Historical",
+        "price": 890,
+        "rating": 4.8,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "April - June",
+        "activities": [
+          "Colosseum",
+          "Vatican City",
+          "Italian Cuisine"
+        ],
+        "description": "Walk through ancient history while enjoying authentic Italian culture and food.",
+        "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5"
+      },
+      {
+        "id": 9,
+        "name": "Zanzibar",
+        "country": "Tanzania",
+        "city": "Stone Town",
+        "category": "Beach",
+        "price": 520,
+        "rating": 4.9,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "June - October",
+        "activities": [
+          "Beach Relaxation",
+          "Snorkeling",
+          "Spice Tours"
+        ],
+        "description": "Enjoy white sandy beaches, turquoise waters and the rich Swahili culture.",
+        "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21"
+      },
+      {
+        "id": 10,
+        "name": "Santorini",
+        "country": "Greece",
+        "city": "Santorini",
+        "category": "Island",
+        "price": 1180,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "May - September",
+        "activities": [
+          "Sunset Viewing",
+          "Island Cruises",
+          "Wine Tasting"
+        ],
+        "description": "Famous for whitewashed buildings, blue domes and unforgettable sunsets.",
+        "image": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff"
+      },
+      {
+        "id": 11,
+        "name": "Reykjavik",
+        "country": "Iceland",
+        "city": "Reykjavik",
+        "category": "Nature",
+        "price": 1350,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "September - March",
+        "activities": [
+          "Northern Lights",
+          "Blue Lagoon",
+          "Golden Circle Tour"
+        ],
+        "description": "Experience breathtaking glaciers, volcanoes, waterfalls and the magical Northern Lights.",
+        "image": "https://images.unsplash.com/photo-1476610182048-b716b8518aae"
+      },
+      {
+        "id": 12,
+        "name": "Banff National Park",
+        "country": "Canada",
+        "city": "Banff",
+        "category": "Mountain",
+        "price": 990,
+        "rating": 4.8,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "June - September",
+        "activities": [
+          "Lake Louise",
+          "Hiking",
+          "Wildlife Viewing"
+        ],
+        "description": "Explore majestic mountains, turquoise lakes and Canada's spectacular wilderness.",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+      },
+      {
+        "id": 13,
+        "name": "Phuket",
+        "country": "Thailand",
+        "city": "Phuket",
+        "category": "Beach",
+        "price": 680,
+        "rating": 4.8,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "November - April",
+        "activities": [
+          "Island Hopping",
+          "Snorkeling",
+          "Night Markets"
+        ],
+        "description": "Relax on tropical beaches, enjoy delicious Thai cuisine and explore vibrant nightlife.",
+        "image": "https://images.unsplash.com/photo-1468413253725-0d5181091126"
+      },
+      {
+        "id": 14,
+        "name": "Bali",
+        "country": "Indonesia",
+        "city": "Ubud",
+        "category": "Island",
+        "price": 760,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "April - October",
+        "activities": [
+          "Rice Terraces",
+          "Temple Visits",
+          "Waterfalls"
+        ],
+        "description": "Discover lush rice terraces, beautiful temples and a rich Balinese culture.",
+        "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4"
+      },
+      {
+        "id": 15,
+        "name": "Sydney",
+        "country": "Australia",
+        "city": "Sydney",
+        "category": "City",
+        "price": 1280,
+        "rating": 4.8,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "September - November",
+        "activities": [
+          "Sydney Opera House",
+          "Harbour Bridge",
+          "Bondi Beach"
+        ],
+        "description": "Visit Australia's iconic harbour city with world-famous beaches and landmarks.",
+        "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9"
+      },
+      {
+        "id": 16,
+        "name": "New York City",
+        "country": "United States",
+        "city": "New York",
+        "category": "City",
+        "price": 1150,
+        "rating": 4.8,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "April - June",
+        "activities": [
+          "Statue of Liberty",
+          "Times Square",
+          "Central Park"
+        ],
+        "description": "Explore the city that never sleeps with its iconic skyline, museums and vibrant culture.",
+        "image": "https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2"
+      },
+      {
+        "id": 17,
+        "name": "Cairo",
+        "country": "Egypt",
+        "city": "Cairo",
+        "category": "Historical",
+        "price": 720,
+        "rating": 4.7,
+        "duration": "5 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "October - April",
+        "activities": [
+          "Pyramids of Giza",
+          "Egyptian Museum",
+          "Nile River Cruise"
+        ],
+        "description": "Journey through one of the world's oldest civilizations and marvel at the Great Pyramids.",
+        "image": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a"
+      },
+      {
+        "id": 18,
+        "name": "Cape Town",
+        "country": "South Africa",
+        "city": "Cape Town",
+        "category": "Nature",
+        "price": 840,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "November - March",
+        "activities": [
+          "Table Mountain",
+          "Cape Point",
+          "Wine Tours"
+        ],
+        "description": "Experience breathtaking coastal scenery, wildlife and world-class vineyards.",
+        "image": "https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8b"
+      },
+      {
+        "id": 19,
+        "name": "Rio de Janeiro",
+        "country": "Brazil",
+        "city": "Rio de Janeiro",
+        "category": "Beach",
+        "price": 930,
+        "rating": 4.8,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "December - March",
+        "activities": [
+          "Christ the Redeemer",
+          "Copacabana Beach",
+          "Sugarloaf Mountain"
+        ],
+        "description": "Enjoy vibrant beaches, lively festivals and spectacular mountain views.",
+        "image": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325"
+      },
+      {
+        "id": 20,
+        "name": "Seoul",
+        "country": "South Korea",
+        "city": "Seoul",
+        "category": "City",
+        "price": 980,
+        "rating": 4.9,
+        "duration": "6 Days",
+        "currency": "USD",
+        "bestTimeToVisit": "March - May",
+        "activities": [
+          "Gyeongbokgung Palace",
+          "N Seoul Tower",
+          "Myeongdong Shopping"
+        ],
+        "description": "Discover a fascinating blend of ancient traditions, modern technology and incredible Korean cuisine.",
+        "image": "https://images.unsplash.com/photo-1549693578-d683be217e58"
+      }
+    ]
