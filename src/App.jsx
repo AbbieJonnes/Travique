@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Destinations from "./pages/Destinations";
-import DestinationDetails from "./pages/DestinationDetails";
-import Profile from "./pages/Profile";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import AdminDashboard from "./pages/AdminDashboard";
-import NotFound from "./pages/NotFound";
+//import Register from "./pages/Register";
+//import Login from "./pages/Login";
+//import Dashboard from "./pages/Dashboard";
+//import Destinations from "./pages/Destinations";
+//import DestinationDetails from "./pages/DestinationDetails";
+//import Profile from "./pages/Profile";
+//import About from "./pages/About";
+//import Contact from "./pages/Contact";
+//import AdminDashboard from "./pages/AdminDashboard";
+//import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
@@ -41,7 +41,7 @@ function App() {
           element={<AdminDashboard />}
         />
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
   );
