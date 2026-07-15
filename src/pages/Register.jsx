@@ -25,13 +25,28 @@ function Register() {
       setError("");
       setLoading(true);
 
-      await register(email, password);
+      await register(name, email, password);
 
       navigate("/login");
 
-    } catch {
-      setError("Failed to create account");
-    }
+    } catch (error) {
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            setError("This email is already registered.");
+            break;
+      
+          case "auth/weak-password":
+            setError("Password must be at least 6 characters.");
+            break;
+      
+          case "auth/invalid-email":
+            setError("Please enter a valid email address.");
+            break;
+      
+          default:
+            setError("Failed to create account. Please try again.");
+        }
+      }
 
     setLoading(false);
   }
@@ -93,13 +108,13 @@ function Register() {
             required
           />
 
-          <button
-            disabled={loading}
-            className="w-full bg-blue-700 hover:bg-blue-800 text-white py-4 rounded-xl font-semibold"
-          >
-            Create Account
-          </button>
-
+<button
+  disabled={loading}
+  className="w-full bg-blue-700 hover:bg-blue-800 text-white py-4 rounded-xl font-semibold disabled:opacity-50"
+>
+  {loading ? "Creating Account..." : "Create Account"}
+</button>
+        
         </form>
 
         <p className="text-center mt-8">
