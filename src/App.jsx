@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-//import Destinations from "./pages/Destinations";
-//import DestinationDetails from "./pages/DestinationDetails";
+import Destinations from "./pages/Destinations";
+import DestinationDetails from "./pages/DestinationDetails";
 //import Profile from "./pages/Profile";
 //import About from "./pages/About";
 //import Contact from "./pages/Contact";
@@ -23,14 +23,14 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
 
-        {/* <Route path="/destinations" element={<Destinations />} />
+        <Route path="/destinations" element={<Destinations />} />
 
         <Route
           path="/destination/:id"
           element={<DestinationDetails />}
         />
 
-        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/profile" element={<Profile />} />
 
         <Route path="/about" element={<About />} />
 
@@ -41,7 +41,7 @@ function App() {
           element={<AdminDashboard />}
         />
 
-        <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />  */}
       </Routes>
     </BrowserRouter>
   );
