@@ -7,16 +7,35 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { auth } from "../config/firebase";
+import { auth, db } from "../config/firebase";
+
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  
+  async function register(fullName, email, password) {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+  
+    const user = userCredential.user;
+  
+    await setDoc(doc(db, "users", user.uid), {
+      fullName,
+      email,
+      role: "user",
+      createdAt: serverTimestamp(),
+    });
+  
+    return userCredential;
   }
+
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
