@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import DestinationCard from "../components/DestinationCard";
+import Loader from "../components/Loader";
 
 function Destinations() {
   const [destinations, setDestinations] = useState([]);
@@ -22,7 +23,6 @@ function Destinations() {
 
     fetchDestinations();
   }, []);
-
   const categories = useMemo(() => {
     return [
       "All",
@@ -41,6 +41,11 @@ function Destinations() {
 
     return matchesSearch && matchesCategory;
   });
+
+  if (loading) {
+    return <Loader />;
+  }
+
 
   return (
     <div className="min-h-screen bg-sky-50 py-16">
