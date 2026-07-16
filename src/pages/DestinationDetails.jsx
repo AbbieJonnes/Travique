@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { MapPin, Star, Clock, Calendar } from "lucide-react";
+import {
+  MapPin,
+  Star,
+  Clock,
+  Calendar,
+  ArrowLeft,
+} from "lucide-react";
+
+import Loader from "../components/Loader";
 
 function DestinationDetails() {
   const { id } = useParams();
 
   const [destination, setDestination] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] =useState(true);
 
   useEffect(() => {
     async function fetchDestination() {
@@ -30,17 +38,15 @@ function DestinationDetails() {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex justify-center items-center">
-        Loading...
-      </div>
-    );
+    return <Loader />;
   }
 
   if (!destination) {
     return (
       <div className="min-h-screen flex justify-center items-center">
-        Destination not found.
+        <h2 className="text-3xl font-bold">
+          Destination not found.
+        </h2>
       </div>
     );
   }
@@ -50,128 +56,136 @@ function DestinationDetails() {
 
       <div className="max-w-7xl mx-auto px-8">
 
+        <Link
+          to="/destinations"
+          className="inline-flex items-center gap-2 text-blue-700 font-semibold hover:underline mb-8"
+        >
+          <ArrowLeft size={20} />
+          Back to Destinations
+        </Link>
+
         <img
           src={destination.image}
           alt={destination.name}
           className="w-full h-[500px] object-cover rounded-3xl shadow-xl"
         />
 
-        <div className="mt-10">
+        <div className="mt-10 flex justify-between items-start flex-wrap gap-6">
 
-          <div className="flex justify-between items-center flex-wrap gap-4">
+          <div>
 
-            <div>
+            <h1 className="text-5xl font-bold">
+              {destination.name}
+            </h1>
 
-              <h1 className="text-5xl font-bold">
-                {destination.name}
-              </h1>
+            <div className="flex items-center gap-2 mt-4 text-gray-600">
 
-              <div className="flex items-center gap-2 text-gray-600 mt-4">
+              <MapPin size={20} />
 
-                <MapPin size={20} />
-
-                <span>
-                  {destination.city}, {destination.country}
-                </span>
-
-              </div>
-
-            </div>
-
-            <div className="flex items-center gap-2 text-amber-500">
-
-              <Star fill="currentColor" />
-
-              <span className="font-bold text-xl">
-                {destination.rating}
+              <span>
+                {destination.city}, {destination.country}
               </span>
 
             </div>
 
           </div>
 
-          <p className="mt-8 text-lg text-gray-700 leading-8">
-            {destination.description}
-          </p>
+          <div className="flex items-center gap-2 text-amber-500 text-xl">
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <Star fill="currentColor" />
 
-            <div className="bg-white rounded-2xl p-6 shadow">
-
-              <Clock className="text-blue-700 mb-4" />
-
-              <h3 className="font-bold">
-                Duration
-              </h3>
-
-              <p>{destination.duration}</p>
-
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 shadow">
-
-              <Calendar className="text-blue-700 mb-4" />
-
-              <h3 className="font-bold">
-                Best Time
-              </h3>
-
-              <p>{destination.bestTimeToVisit}</p>
-
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 shadow">
-
-              <h3 className="font-bold text-blue-700 text-3xl">
-                ${destination.price}
-              </h3>
-
-              <p className="text-gray-500">
-                Starting Price
-              </p>
-
-            </div>
+            <span className="font-bold">
+              {destination.rating}
+            </span>
 
           </div>
 
-          <div className="mt-14">
+        </div>
 
-            <h2 className="text-3xl font-bold mb-6">
-              Activities
-            </h2>
+        <p className="mt-8 text-lg leading-8 text-gray-700">
+          {destination.description}
+        </p>
 
-            <div className="flex flex-wrap gap-4">
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
 
-              {destination.activities.map((activity) => (
-                <span
-                  key={activity}
-                  className="bg-blue-700 text-white px-5 py-3 rounded-full"
-                >
-                  {activity}
-                </span>
-              ))}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
 
-            </div>
+            <Clock className="text-blue-700 mb-4" />
+
+            <h3 className="font-bold text-xl">
+              Duration
+            </h3>
+
+            <p className="mt-2 text-gray-600">
+              {destination.duration}
+            </p>
+
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+
+            <Calendar className="text-blue-700 mb-4" />
+
+            <h3 className="font-bold text-xl">
+              Best Time To Visit
+            </h3>
+
+            <p className="mt-2 text-gray-600">
+              {destination.bestTimeToVisit}
+            </p>
 
           </div>
 
-          <div className="mt-16 flex gap-6">
+          <div className="bg-white rounded-2xl shadow-lg p-6">
 
-            <Link
-              to="/booking"
-              className="bg-blue-700 text-white px-10 py-4 rounded-xl font-semibold hover:bg-blue-800"
-            >
-              Book Trip
-            </Link>
+            <h3 className="text-blue-700 text-4xl font-bold">
+              ${destination.price}
+            </h3>
 
-            <Link
-              to="/destinations"
-              className="border-2 border-blue-700 text-blue-700 px-10 py-4 rounded-xl font-semibold hover:bg-blue-700 hover:text-white"
-            >
-              Back
-            </Link>
+            <p className="mt-2 text-gray-600">
+              Starting Price
+            </p>
 
           </div>
+
+        </div>
+
+        <div className="mt-14">
+
+          <h2 className="text-3xl font-bold mb-6">
+            Activities
+          </h2>
+
+          <div className="flex flex-wrap gap-4">
+
+            {destination.activities.map((activity) => (
+              <span
+                key={activity}
+                className="bg-blue-700 text-white px-5 py-3 rounded-full"
+              >
+                {activity}
+              </span>
+            ))}
+
+          </div>
+
+        </div>
+
+        <div className="mt-16 flex gap-6">
+
+          <Link
+            to="/booking"
+            className="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-xl font-semibold transition"
+          >
+            Book Trip
+          </Link>
+
+          <Link
+            to="/destinations"
+            className="border-2 border-blue-700 text-blue-700 px-10 py-4 rounded-xl font-semibold hover:bg-blue-700 hover:text-white transition"
+          >
+            Explore More
+          </Link>
 
         </div>
 
