@@ -12,7 +12,7 @@ function WeatherCard({ city }) {
         const data = await getWeather(city);
         setWeather(data);
       } catch (err) {
-       // console.error(err);
+       console.error(err);
         setError("Unable to load weather.");
       } finally {
         setLoading(false);
