@@ -1,3 +1,5 @@
+//uses a public API that doesn't need authentication
+
 const BASE_URL = "https://restcountries.com/v3.1/name";
 
 export async function getCountryDetails(country) {
