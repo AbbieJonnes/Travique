@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBookings from "./pages/admin/AdminBookings";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminRoute from "./components/AdminRoute";
+import ReceiptPage from "./pages/Receipt";
 // import NotFound from "./pages/NotFound";
 
 function App() {
@@ -108,6 +109,15 @@ function App() {
     <AdminRoute>
       <AdminUsers />
     </AdminRoute>
+  }
+/>
+
+<Route
+  path="/receipt"
+  element={
+    <ProtectedRoute>
+      <ReceiptPage />
+    </ProtectedRoute>
   }
 />
 
