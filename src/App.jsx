@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Destinations from "./pages/Destinations";
 import DestinationDetails from "./pages/DestinationDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
+import BookingForm from "./components/BookingForm";
 // import Profile from "./pages/Profile";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -43,6 +44,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route 
+  path="/booking" 
+  element={<BookingForm />}
+/>
 
         {/*
 
