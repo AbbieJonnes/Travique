@@ -13,6 +13,8 @@ import Profile from "./pages/Profile";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminBookings from "./pages/admin/AdminBookings";
+import AdminUsers from "./pages/admin/AdminUsers";
 import AdminRoute from "./components/AdminRoute";
 // import NotFound from "./pages/NotFound";
 
@@ -78,6 +80,24 @@ function App() {
   element={
     <AdminRoute>
       <AdminDashboard />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/bookings"
+  element={
+    <AdminRoute>
+      <AdminBookings />
+    </AdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/users"
+  element={
+    <AdminRoute>
+      <AdminUsers />
     </AdminRoute>
   }
 />
