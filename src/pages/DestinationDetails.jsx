@@ -9,33 +9,88 @@ import {
 } from "lucide-react";
 
 import Loader from "../components/Loader";
+import WeatherCard from "../components/WeatherCard";
+import MapView from "../components/MapView";
+import HotelCard from "../components/HotelCard";
+import RestaurantCard from "../components/RestaurantCard";
+import AttractionCard from "../components/AttractionCard";
+
+import { getWeather } from "../services/weatherService";
+import { getCountryDetails } from "../services/countriesService";
+import {
+  getHotels,
+  getRestaurants,
+  getAttractions,
+} from "../services/placesService";
 
 function DestinationDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [destination, setDestination] = useState(null);
   const [loading, setLoading] =useState(true);
+  const [weather, setWeather] = useState(null);
+
+const [coordinates, setCoordinates] = useState(null);
+
+const [hotels, setHotels] = useState([]);
+
+const [restaurants, setRestaurants] = useState([]);
+
+const [attractions, setAttractions] = useState([]);
+
 
   useEffect(() => {
     async function fetchDestination() {
       try {
         const response = await fetch("/destination.json");
         const data = await response.json();
-
+    
         const selectedDestination = data.find(
           (item) => item.id === Number(id)
         );
-
+    
         setDestination(selectedDestination);
+    
+        if (!selectedDestination) return;
+    
+        // Weather
+        const weatherData = await getWeather(selectedDestination.city);
+        setWeather(weatherData);
+    
+        // Country Details
+        const country = await getCountryDetails(
+          selectedDestination.country
+        );
+    
+        if (country?.latlng) {
+          const [lat, lon] = country.latlng;
+    
+          setCoordinates({
+            lat,
+            lon,
+          });
+    
+          const hotelsData = await getHotels(lat, lon);
+          setHotels(hotelsData);
+    
+          const restaurantsData =
+            await getRestaurants(lat, lon);
+    
+          setRestaurants(restaurantsData);
+    
+          const attractionsData =
+            await getAttractions(lat, lon);
+    
+          setAttractions(attractionsData);
+        }
       } catch (error) {
         console.error(error);
       } finally {
         setLoading(false);
       }
     }
-
     fetchDestination();
-  }, [id]);
+}, [id]);
 
   if (loading) {
     return <Loader />;
@@ -149,6 +204,108 @@ function DestinationDetails() {
           </div>
 
         </div>
+
+        {/* Weather */}
+
+{weather && (
+  <div className="mt-14">
+    <h2 className="text-3xl font-bold mb-6">
+      Current Weather
+    </h2>
+
+    <WeatherCard weather={weather} />
+  </div>
+)}
+
+{/* Map */}
+
+{coordinates && (
+  <div className="mt-14">
+    <h2 className="text-3xl font-bold mb-6">
+      Location
+    </h2>
+
+    <MapView
+      lat={coordinates.lat}
+      lon={coordinates.lon}
+      destination={destination}
+    />
+  </div>
+)}
+
+
+      {/* Hotels */}
+
+{hotels.length > 0 && (
+  <div className="mt-14">
+
+    <h2 className="text-3xl font-bold mb-6">
+      Hotels Nearby
+    </h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {hotels.map((hotel) => (
+        <HotelCard
+          key={hotel.properties.place_id}
+          hotel={hotel}
+        />
+      ))}
+
+    </div>
+
+  </div>
+)}
+
+
+   {/* Restaurants */}
+
+{restaurants.length > 0 && (
+  <div className="mt-14">
+
+    <h2 className="text-3xl font-bold mb-6">
+      Restaurants Nearby
+    </h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {restaurants.map((restaurant) => (
+        <RestaurantCard
+          key={restaurant.properties.place_id}
+          restaurant={restaurant}
+        />
+      ))}
+
+    </div>
+
+  </div>
+)}
+
+
+   {/* Attractions */}
+
+{attractions.length > 0 && (
+  <div className="mt-14">
+
+    <h2 className="text-3xl font-bold mb-6">
+      Tourist Attractions
+    </h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {attractions.map((attraction) => (
+        <AttractionCard
+          key={attraction.properties.place_id}
+          attraction={attraction}
+        />
+      ))}
+
+    </div>
+
+  </div>
+)}
+   
+
 
         <div className="mt-14">
 
