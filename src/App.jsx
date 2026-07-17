@@ -11,7 +11,7 @@ import BookingForm from "./components/BookingForm";
 import BookingSuccess from "./pages/BookingSuccess";
 import Reservation from "./pages/Reservation";
 import Profile from "./pages/Profile";
-// import About from "./pages/About";
+import About from "./pages/About";
 // import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBookings from "./pages/admin/AdminBookings";
@@ -81,10 +81,10 @@ function App() {
           }
         />
 
-       {/*  <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} /> 
- */}
+       <Route path="/about" element={<About />} />
+        {/* <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />  */}
+
          <Route
   path="/admin"
   element={
