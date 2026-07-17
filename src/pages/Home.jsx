@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import { Menu, Moon, Plane, MapPin, Compass, ShieldCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Home() {
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
+
+  function handleExploreTrips() {
+    if (currentUser) {
+      navigate("/destinations");
+    } else {
+      navigate("/login");
+    }
+  }
+
+
   const destinations = [
     {
       name: "Bali, Indonesia",
@@ -134,14 +148,12 @@ function Home() {
               >
                 Get Started
               </Link>
-
-              <Link
-                to="/destinations"
+             
+              <button onClick={handleExploreTrips}
                 className="border-2 border-blue-700 px-8 py-4 rounded-xl font-semibold text-blue-700 hover:bg-blue-700 hover:text-white"
               >
-                Explore Trips
-              </Link>
-
+               Explore Trips
+               </button>
             </div>
 
             <div className="flex gap-12 mt-14">
