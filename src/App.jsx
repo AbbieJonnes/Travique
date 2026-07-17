@@ -13,7 +13,7 @@ import Reservation from "./pages/Reservation";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-// import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBookings from "./pages/admin/AdminBookings";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -84,7 +84,7 @@ function App() {
 
        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="*" element={<NotFound />} />  */}
+        <Route path="*" element={<NotFound />} /> 
 
          <Route
   path="/admin"
