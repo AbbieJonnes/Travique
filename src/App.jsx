@@ -8,7 +8,7 @@ import Destinations from "./pages/Destinations";
 import DestinationDetails from "./pages/DestinationDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import BookingForm from "./components/BookingForm";
-import Reservation from "./pages/Reservation";
+import BookingSuccess from "./pages/BookingSuccess";
 import Profile from "./pages/Profile";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -54,14 +54,13 @@ function App() {
 />
 
 <Route
-  path="/reservation"
+  path="/booking-success"
   element={
     <ProtectedRoute>
-      <Reservation />
+      <BookingSuccess />
     </ProtectedRoute>
   }
 />
-
         <Route
           path="/profile"
           element={
