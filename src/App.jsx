@@ -12,7 +12,8 @@ import Reservation from "./pages/Reservation";
 import Profile from "./pages/Profile";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
-// import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 // import NotFound from "./pages/NotFound";
 
 function App() {
@@ -68,21 +69,18 @@ function App() {
           }
         />
 
-        {/*  <Route path="/about" element={<About />} />
+       {/*  <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
-
-        <Route path="*" element={<NotFound />} /> */}
-
-         
+        <Route path="*" element={<NotFound />} /> 
+ */}
+         <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
 
       </Routes>
     </BrowserRouter>
