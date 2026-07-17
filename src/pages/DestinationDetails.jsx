@@ -16,7 +16,6 @@ import RestaurantCard from "../components/RestaurantCard";
 import AttractionCard from "../components/AttractionCard";
 
 import { getWeather } from "../services/weatherService";
-import { getCountryDetails } from "../services/countriesService";
 import {
   getHotels,
   getRestaurants,
@@ -56,33 +55,8 @@ const [attractions, setAttractions] = useState([]);
         // Weather
         const weatherData = await getWeather(selectedDestination.city);
         setWeather(weatherData);
-    
-        // Country Details
-        const country = await getCountryDetails(
-          selectedDestination.country
-        );
-    
-        if (country?.latlng) {
-          const [lat, lon] = country.latlng;
-    
-          setCoordinates({
-            lat,
-            lon,
-          });
-    
-          const hotelsData = await getHotels(lat, lon);
-          setHotels(hotelsData);
-    
-          const restaurantsData =
-            await getRestaurants(lat, lon);
-    
-          setRestaurants(restaurantsData);
-    
-          const attractionsData =
-            await getAttractions(lat, lon);
-    
-          setAttractions(attractionsData);
-        }
+
+        
       } catch (error) {
         console.error(error);
       } finally {
