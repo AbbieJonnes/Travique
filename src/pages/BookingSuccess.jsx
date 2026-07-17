@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 
-function Reservation() {
+function BookingSuccess() {
   const { state } = useLocation();
 
   const destination = state?.destination;
@@ -103,4 +103,4 @@ function Reservation() {
   );
 }
 
-export default Reservation;
+export default BookingSuccess;
