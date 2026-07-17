@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useBooking } from "../context/BookingContext";
 import { useFavorites } from "../context/FavoritesContext";
+import { Link } from "react-router-dom";
 
 import {
   MapPin,
@@ -248,6 +249,24 @@ function Profile() {
             </div>
 
           )}
+
+<div className="flex gap-4 mt-10">
+
+<Link
+  to="/"
+  className="flex-1 bg-blue-700 text-white py-4 rounded-xl text-center font-semibold hover:bg-blue-800"
+>
+  Back to Home
+</Link>
+
+<Link
+  to="/destinations"
+  className="flex-1 border-2 border-blue-700 text-blue-700 py-4 rounded-xl text-center font-semibold hover:bg-blue-700 hover:text-white"
+>
+  Explore Trips
+</Link>
+
+</div>
 
 
         </section>
