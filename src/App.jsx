@@ -19,6 +19,7 @@ import AdminBookings from "./pages/admin/AdminBookings";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminRoute from "./components/AdminRoute";
 import ReceiptPage from "./pages/Receipt";
+import Assistant from "./components/Assistant";
 
 
 function App() {
@@ -123,6 +124,7 @@ function App() {
 />
 
       </Routes>
+      <Assistant />
     </BrowserRouter>
   );
 }
