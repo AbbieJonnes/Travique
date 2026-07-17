@@ -102,7 +102,11 @@ function BookingForm() {
       );
 
 
-      navigate("/profile");
+      navigate("/reservation", {
+        state: {
+          destination,
+        },
+      });
 
 
     } catch (error) {
