@@ -50,21 +50,22 @@ function BookingForm() {
       const bookingData = {
 
         userId: user.uid,
-
+      
         destinationId: destination.id,
         destinationName: destination.name,
+        city: destination.city,
         country: destination.country,
         price: destination.price,
-
+      
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-
+      
         travelDate: formData.travelDate,
         travellers: Number(formData.travellers),
-
+      
         specialRequests: formData.specialRequests,
-
+      
       };
 
 
