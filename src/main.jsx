@@ -5,9 +5,11 @@ import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext';
 import { BookingProvider } from './context/BookingContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { ThemeProvider } from "./context/ThemeContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <AuthProvider>
       <BookingProvider>
       <FavoritesProvider>
@@ -15,5 +17,6 @@ createRoot(document.getElementById('root')).render(
       </FavoritesProvider>
       </BookingProvider>
     </AuthProvider>
+    </ThemeProvider>
   </StrictMode>,
 );
