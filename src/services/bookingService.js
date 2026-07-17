@@ -78,3 +78,19 @@ export async function getAllUsers() {
     ...doc.data(),
   }));
 }
+
+// Get approved bookings for one user
+export async function getApprovedBookings(userId) {
+  const q = query(
+    collection(db, "bookings"),
+    where("userId", "==", userId),
+    where("status", "==", "Approved")
+  );
+
+  const snapshot = await getDocs(q);
+
+  return snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
