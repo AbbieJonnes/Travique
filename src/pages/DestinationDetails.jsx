@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   MapPin,
   Star,
@@ -12,7 +12,7 @@ import Loader from "../components/Loader";
 
 function DestinationDetails() {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [destination, setDestination] = useState(null);
   const [loading, setLoading] =useState(true);
 
@@ -173,13 +173,18 @@ function DestinationDetails() {
 
         <div className="mt-16 flex gap-6">
 
-          <Link
-            to="/booking"
-            className="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-xl font-semibold transition"
-          >
-            Book Trip
-          </Link>
-
+        <button
+  onClick={() =>
+    navigate("/booking", {
+      state: {
+        destination,
+      },
+    })
+  }
+  className="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-xl font-semibold transition"
+>
+  Book Trip
+</button>
           <Link
             to="/destinations"
             className="border-2 border-blue-700 text-blue-700 px-10 py-4 rounded-xl font-semibold hover:bg-blue-700 hover:text-white transition"
