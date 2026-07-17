@@ -139,6 +139,14 @@ function Reservation() {
 
           </Link>
 
+
+          <Link
+  to="/"
+  className="inline-flex items-center text-blue-700 font-semibold hover:underline mb-6"
+>
+  ← Back to Home
+</Link>
+
         </div>
 
       </div>
