@@ -1,82 +1,121 @@
 import {
-    MapPin,
     Landmark,
-    ExternalLink,
+    MapPin,
     Info,
+    Clock3,
+    Star,
+    Globe,
+    Map,
   } from "lucide-react";
   
   function AttractionCard({ attraction }) {
+    const props = attraction.properties;
+  
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      props.formatted || props.name
+    )}`;
+  
+    const description =
+      props.datasource?.raw?.description ||
+      props.description ||
+      null;
+  
     return (
-      <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-6 border border-sky-100">
   
         {/* Header */}
-        <div className="bg-gradient-to-r from-sky-500 to-blue-600 p-5">
+        <div className="flex items-center gap-3 mb-5">
   
-          <div className="flex items-center gap-3">
-  
-            <div className="bg-white/20 p-3 rounded-full">
-              <Landmark
-                size={24}
-                className="text-white"
-              />
-            </div>
-  
-            <h3 className="text-xl font-bold text-white">
-              {attraction.properties.name ||
-                "Unnamed Attraction"}
-            </h3>
-  
+          <div className="bg-blue-100 p-3 rounded-full">
+            <Landmark className="text-blue-600" />
           </div>
+  
+          <h2 className="text-xl font-bold text-slate-800">
+            {props.name || "Unnamed Attraction"}
+          </h2>
   
         </div>
   
         {/* Content */}
-        <div className="p-5 space-y-4">
+        <div className="space-y-4 text-slate-600">
   
-          <div className="flex items-start gap-2 text-gray-600">
-  
+          <div className="flex gap-3">
             <MapPin
-              size={18}
               className="text-red-500 mt-1"
+              size={18}
             />
   
             <p>
-              {attraction.properties.formatted ||
-                "Location unavailable"}
+              {props.formatted || "Location unavailable"}
             </p>
-  
           </div>
   
-          {attraction.properties.datasource?.raw?.description && (
-            <div className="flex items-start gap-2">
+          {description && (
+            <div className="flex gap-3">
   
               <Info
-                size={18}
                 className="text-sky-600 mt-1"
+                size={18}
               />
   
-              <p className="text-gray-600 text-sm">
-                {attraction.properties.datasource.raw.description}
+              <p className="line-clamp-3">
+                {description}
               </p>
   
             </div>
           )}
   
-          {attraction.properties.website ? (
+          {props.opening_hours && (
+            <div className="flex gap-3">
+  
+              <Clock3
+                className="text-green-600 mt-1"
+                size={18}
+              />
+  
+              <p>{props.opening_hours}</p>
+  
+            </div>
+          )}
+  
+          {props.rating && (
+            <div className="flex gap-3">
+  
+              <Star
+                className="text-yellow-500 mt-1"
+                size={18}
+              />
+  
+              <p>{props.rating} / 5</p>
+  
+            </div>
+          )}
+  
+        </div>
+  
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-3 mt-8">
+  
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-sky-600 text-white px-5 py-2 rounded-full hover:bg-sky-700 transition"
+          >
+            <Map size={18} />
+            View on Maps
+          </a>
+  
+          {props.website && (
             <a
-              href={attraction.properties.website}
+              href={props.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition"
+              className="flex items-center gap-2 border border-sky-600 text-sky-600 px-5 py-2 rounded-full hover:bg-sky-50 transition"
             >
-              Visit Attraction
-  
-              <ExternalLink size={18} />
+              <Globe size={18} />
+              Website
             </a>
-          ) : (
-            <p className="text-sm text-gray-400">
-              No website available
-            </p>
           )}
   
         </div>
