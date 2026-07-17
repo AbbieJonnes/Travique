@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import MpesaModal from "../components/MpesaModal";
 import {
   MapPin,
   Hotel,
@@ -35,6 +36,8 @@ function Reservation() {
   const [selectedTours, setSelectedTours] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
 
@@ -524,18 +527,15 @@ function Reservation() {
   
       <div className="flex flex-wrap gap-4 mt-10">
   
-        <button
-  
-          className="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2"
-  
-        >
-  
-          <CreditCard size={20} />
-  
-          Continue to Payment
-  
-        </button>
-  
+      <button
+  onClick={() => setShowPayment(true)}
+  className="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2"
+>
+  <CreditCard size={20} />
+
+  Continue to Payment
+
+</button>
         <Link
   
           to="/profile"
@@ -563,6 +563,14 @@ function Reservation() {
       </div>
   
     </div>
+    <MpesaModal
+  open={showPayment}
+  onClose={() => setShowPayment(false)}
+  total={total}
+  booking={booking}
+  hotel={selectedHotel}
+  tours={selectedTours}
+/>
   
   </div>
     );
