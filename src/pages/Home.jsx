@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Menu, Moon, Plane, MapPin, Compass, ShieldCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Sun } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 function Home() {
+  const { darkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
 
@@ -50,11 +53,11 @@ function Home() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-background text-foreground transition-colors duration-300">
 
       {/* ================= NAVBAR ================= */}
 
-      <nav className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+      <nav className="fixed top-0 left-0 w-full bg-background/95 backdrop-blur-md shadow-sm z-50">
 
         <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
 
@@ -65,14 +68,10 @@ function Home() {
             Travique
           </Link>
 
-          <div className="hidden lg:flex items-center gap-10 font-medium text-gray-700">
+          <div className="hidden lg:flex items-center gap-10 font-medium text-foreground">
 
             <Link to="/" className="hover:text-blue-700">
               Home
-            </Link>
-
-            <Link to="/destinations" className="hover:text-blue-700">
-              Destinations
             </Link>
 
             <Link to="/about" className="hover:text-blue-700">
@@ -87,10 +86,12 @@ function Home() {
 
           <div className="hidden lg:flex items-center gap-4">
 
-            <button className="p-2 rounded-full hover:bg-gray-100">
-              <Moon size={20} />
-            </button>
-
+          <button
+  onClick={toggleTheme}
+  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700 transition"
+>
+  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+</button>
             <Link
               to="/login"
               className="text-blue-700 font-semibold"
@@ -347,7 +348,7 @@ function Home() {
 
               <div
                 key={place.name}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300"
+                className="bg-card rounded-3xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300"
               >
 
                 <img
@@ -362,13 +363,16 @@ function Home() {
                     {place.name}
                   </h3>
 
-                  <p className="text-gray-600 mt-3">
+                  <p className="text-muted-foreground mt-3">
                     Discover unforgettable memories waiting for you.
                   </p>
 
-                  <button className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800">
-                    Explore
-                  </button>
+                  <button
+  onClick={handleExploreTrips}
+  className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+>
+  Explore
+</button>
 
                 </div>
 
@@ -545,19 +549,14 @@ function Home() {
 
     <div className="flex justify-center gap-5 mt-10">
 
-      <Link
-        to="/register"
-        className="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
-      >
-        Get Started
-      </Link>
-
-      <Link
-        to="/destinations"
-        className="border-2 border-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-700"
-      >
-        Explore Trips
-      </Link>
+    <div className="flex justify-center mt-10">
+  <Link
+    to="/register"
+    className="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
+  >
+    Get Started
+  </Link>
+</div>
 
     </div>
 
@@ -600,8 +599,6 @@ function Home() {
       <li><Link to="/" className="hover:text-sky-400">Home</Link></li>
 
       <li><Link to="/about" className="hover:text-sky-400">About</Link></li>
-
-      <li><Link to="/destinations" className="hover:text-sky-400">Destinations</Link></li>
 
       <li><Link to="/contact" className="hover:text-sky-400">Contact</Link></li>
 
