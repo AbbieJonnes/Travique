@@ -9,6 +9,7 @@ import DestinationDetails from "./pages/DestinationDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import BookingForm from "./components/BookingForm";
 import BookingSuccess from "./pages/BookingSuccess";
+import Reservation from "./pages/Reservation";
 import Profile from "./pages/Profile";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -58,6 +59,15 @@ function App() {
   element={
     <ProtectedRoute>
       <BookingSuccess />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/reservation"
+  element={
+    <ProtectedRoute>
+      <Reservation />
     </ProtectedRoute>
   }
 />
