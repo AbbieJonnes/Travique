@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "../config/firebase";
 
 function Login() {
   const { login } = useAuth();
@@ -21,8 +23,21 @@ function Login() {
 
       await login(email, password);
 
-      navigate("/dashboard");
+// Get the currently logged in user
+const user = auth.currentUser;
 
+// Get their Firestore document
+const userDoc = await getDoc(doc(db, "users", user.uid));
+
+if (userDoc.exists()) {
+  const userData = userDoc.data();
+
+  if (userData.role === "admin") {
+    navigate("/admin");
+  } else {
+    navigate("/dashboard");
+  }
+}
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-credential":
