@@ -71,44 +71,34 @@ function BookingForm() {
 
       await createBooking(bookingData);
 
+await sendEmail({
+  email: bookingData.email,
+  user_name: bookingData.fullName,
+  subject: "Travique Booking Request Received",
+  message: `
+Hello ${bookingData.fullName},
 
-      await sendEmail({
-        email: bookingData.email,
-      
-        user_name: bookingData.fullName,
-      
-        subject: "Travique Booking Request Received",
-      
-        message: `
-      Hello ${bookingData.fullName},
-      
-      Thank you for choosing Travique.
-      
-      Your booking request for ${bookingData.destinationName}, ${bookingData.country} has been received successfully.
-      
-      Travel Date:
-      ${bookingData.travelDate}
-      
-      Number of Travellers:
-      ${bookingData.travellers}
-      
-      Our team is reviewing your request. You will receive another email once your booking has been approved.
-      
-      Thank you for trusting Travique.
-        `,
-      });
+Thank you for choosing Travique.
 
-      alert(
-        "Your booking request has been submitted successfully."
-      );
+Your booking request for ${bookingData.destinationName}, ${bookingData.country} has been received successfully.
 
+Travel Date:
+${bookingData.travelDate}
 
-      navigate("/reservation", {
-        state: {
-          destination,
-        },
-      });
+Number of Travellers:
+${bookingData.travellers}
 
+Your booking is currently under review.
+
+You will receive another email once our administrators approve your booking.
+
+After approval, you can continue your reservation from your Profile page.
+
+Thank you for trusting Travique.
+`,
+});
+
+navigate("/booking-success");
 
     } catch (error) {
 
