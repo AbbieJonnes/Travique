@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 import { createBooking } from "../services/bookingService";
+import { sendEmail } from "../services/emailService";
 
 function BookingForm() {
   const location = useLocation();
@@ -69,6 +70,32 @@ function BookingForm() {
 
       await createBooking(bookingData);
 
+
+      await sendEmail({
+        email: bookingData.email,
+      
+        user_name: bookingData.fullName,
+      
+        subject: "Travique Booking Request Received",
+      
+        message: `
+      Hello ${bookingData.fullName},
+      
+      Thank you for choosing Travique.
+      
+      Your booking request for ${bookingData.destinationName}, ${bookingData.country} has been received successfully.
+      
+      Travel Date:
+      ${bookingData.travelDate}
+      
+      Number of Travellers:
+      ${bookingData.travellers}
+      
+      Our team is reviewing your request. You will receive another email once your booking has been approved.
+      
+      Thank you for trusting Travique.
+        `,
+      });
 
       alert(
         "Your booking request has been submitted successfully."
