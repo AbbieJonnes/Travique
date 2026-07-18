@@ -8,7 +8,7 @@ import { useTheme } from "../context/ThemeContext";
 function Home() {
   const { darkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
 
   function handleExploreTrips() {
     if (currentUser) {
@@ -86,20 +86,42 @@ function Home() {
 
           <div className="hidden lg:flex items-center gap-4">
 
-          <button
+<button
   onClick={toggleTheme}
   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700 transition"
 >
   {darkMode ? <Sun size={20} /> : <Moon size={20} />}
 </button>
-            <Link
-              to="/login"
-              className="text-blue-700 font-semibold"
-            >
-              Login
-            </Link>
 
-          </div>
+{currentUser ? (
+  <>
+    <Link
+      to="/dashboard"
+      className="text-blue-700 font-semibold"
+    >
+      Dashboard
+    </Link>
+
+    <button
+      onClick={async () => {
+        await logout();
+        navigate("/");
+      }}
+      className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+    >
+      Logout
+    </button>
+  </>
+) : (
+  <Link
+    to="/login"
+    className="text-blue-700 font-semibold"
+  >
+    Login
+  </Link>
+)}
+
+</div>
 
           <button className="lg:hidden">
             <Menu />
