@@ -50,7 +50,7 @@ You can now continue your reservation.
 
 Click the link below to continue your reservation:
 
-https://travique-orpin.vercel.app/reservation
+https://travique-orpin.vercel.app/login?redirect=reservation
 
 Your next steps are:
 
