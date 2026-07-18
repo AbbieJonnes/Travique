@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+
 import {
   Map,
   Plane,
@@ -13,6 +17,27 @@ import {
 function Dashboard() {
   const { currentUser } = useAuth();
 
+  const [fullName, setFullName] = useState("");
+
+  useEffect(() => {
+    async function loadUser() {
+      if (!currentUser) return;
+
+      try {
+        const docRef = doc(db, "users", currentUser.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setFullName(docSnap.data().fullName);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    loadUser();
+  }, [currentUser]);
+
   return (
     <div className="min-h-screen bg-sky-50">
 
@@ -23,12 +48,8 @@ function Dashboard() {
         <div className="max-w-7xl mx-auto px-8">
 
           <h1 className="text-4xl font-bold">
-            Welcome Back 👋
+            Hello {fullName || "Traveller"} 👋
           </h1>
-
-          <p className="mt-3 text-blue-100">
-            {currentUser?.email}
-          </p>
 
           <p className="mt-4 text-lg">
             Ready for your next adventure?
