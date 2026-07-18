@@ -1,12 +1,22 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../config/firebase";
 
 function Login() {
   const { login } = useAuth();
+
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const redirect = params.get("redirect");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,21 +33,26 @@ function Login() {
 
       await login(email, password);
 
-// Get the currently logged in user
-const user = auth.currentUser;
+      const user = auth.currentUser;
 
-// Get their Firestore document
-const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userDoc = await getDoc(doc(db, "users", user.uid));
 
-if (userDoc.exists()) {
-  const userData = userDoc.data();
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
 
-  if (userData.role === "admin") {
-    navigate("/admin");
-  } else {
-    navigate("/dashboard");
-  }
-}
+        // If user came from approval email
+        if (redirect === "reservation") {
+          navigate("/reservation");
+          return;
+        }
+
+        // Normal login
+        if (userData.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/dashboard");
+        }
+      }
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-credential":
@@ -111,7 +126,6 @@ if (userDoc.exists()) {
         </form>
 
         <p className="text-center mt-8">
-
           Don't have an account?
 
           <Link
