@@ -16,7 +16,7 @@ function Assistant() {
   const [messages, setMessages] = useState([
     {
       sender: "assistant",
-      text: "👋 Hello! I'm the Travique Travel Assistant. How can I help you today?",
+      text: " Hello! I'm the Travique Travel Assistant. How can I help you today?",
     },
   ]);
 
@@ -115,7 +115,7 @@ function Assistant() {
       lower.includes("hi")
     ) {
       reply =
-        "Hello 👋 How may I assist you today?";
+        "Hello , How may I assist you today?";
     }
 
     else if (
