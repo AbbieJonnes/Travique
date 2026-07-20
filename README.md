@@ -239,4 +239,4 @@ Email: abigaelmwangi534@gmail.com
 
 ## License
 
-This project was developed for educational purposes as a frontend capstone project.
+This project is under the MIT License
