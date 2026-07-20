@@ -142,7 +142,7 @@ function Home() {
           <div>
 
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-medium mb-6">
-              🌍 Discover Amazing Destinations
+               Discover Amazing Destinations
             </span>
 
             <h1 className="text-6xl font-black leading-tight text-gray-900">
@@ -429,32 +429,32 @@ function Home() {
 
     {[
       {
-        emoji: "🏝️",
+        
         title: "Beach Holidays",
         text: "Relax on the world's most beautiful beaches.",
       },
       {
-        emoji: "🦁",
+        
         title: "Wildlife Safari",
         text: "Experience unforgettable wildlife adventures.",
       },
       {
-        emoji: "🏔️",
+        
         title: "Mountain Hiking",
         text: "Conquer breathtaking mountain trails.",
       },
       {
-        emoji: "🏙️",
+       
         title: "City Tours",
         text: "Discover culture, history and nightlife.",
       },
       {
-        emoji: "🚢",
+        
         title: "Luxury Cruises",
         text: "Sail across stunning oceans in comfort.",
       },
       {
-        emoji: "🎒",
+        
         title: "Backpacking",
         text: "Travel freely and explore hidden gems.",
       },
@@ -666,7 +666,7 @@ function Home() {
 
 <div className="border-t border-slate-700 mt-16 pt-8 text-center text-gray-400">
 
-  © 2026 Travique. All Rights Reserved.
+  &copy; 2026 Travique. All Rights Reserved.
 
 </div>
 
